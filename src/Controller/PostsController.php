@@ -9,6 +9,11 @@ class PostsController extends AppController
         $this->loadComponent('RequestHandler');
     }
 
+    /**
+     * function index
+     * all method
+     * http://localhost/api/posts/index.json
+     */
     public function index()
     {
         $posts = $this->Posts->find('all');
@@ -20,6 +25,12 @@ class PostsController extends AppController
         ]);
     }
 
+    /**
+     * function view
+     * all method
+     * can use get method while add allowMethod
+     * http://localhost/api/posts/view/($id).json
+     */
     public function view($id = null)
     {
         $posts = $this->Posts->get($id);
@@ -31,6 +42,11 @@ class PostsController extends AppController
         ]);
     }
 
+    /**
+     * function add
+     * POST| PUT
+     * http://localhost/api/posts/add.json
+     */
     public function add()
     {
         $this->request->allowMethod(['post', 'put']);
@@ -47,6 +63,11 @@ class PostsController extends AppController
         ]);
     }
 
+    /**
+     * function edit
+     * POST| PUT
+     * http://localhost/api/posts/edit.json
+     */
     public function edit($id = null)
     {
         $this->request->allowMethod(['patch', 'post', 'put']);
@@ -63,6 +84,11 @@ class PostsController extends AppController
         ]);
     }
 
+    /**
+     * function delete
+     * DELETE
+     * http://localhost/api/posts/delete/($id).json
+     */
     public function delete($id = null)
     {
         $this->request->allowMethod(['delete']);
